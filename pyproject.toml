@@ -3,6 +3,7 @@ name = "camp_inscription"
 version = "0.1.0"
 description = ""
 authors = ["carlosavellaneda8 <carlos.avellaneda8@gmail.com>"]
+packages = [{ include = "camp_inscription" }, ]
 
 [tool.poetry.dependencies]
 python = "^3.10"
