@@ -22,6 +22,10 @@ class Person:
     def __init__(self, id: int):
         self.id = id
 
+    def get_support_data(self):
+        """Get the data if the person is supported by the Church"""
+        pass
+
     def get_team_data(self):
         """Get the data of the person's camp team"""
         url = format_url(id_number=self.id, table=TEAM_TABLE)
