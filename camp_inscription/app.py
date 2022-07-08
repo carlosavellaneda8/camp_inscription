@@ -58,9 +58,7 @@ def check_id_number() -> Tuple[bool, Any]:
 
 if check_id_number() & ("id_number" in st.session_state):
     st.image(image=get_image_path())
-    st.markdown("""
-    # Retiro de Jóvenes 2022 - TBUCF
-    """)
+    st.markdown("# Retiro de Jóvenes 2022 - TBUCF")
     person = Person(st.session_state["id_number"])
     payment = person.get_payment_data()
     name = (
