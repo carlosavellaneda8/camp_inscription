@@ -1,7 +1,7 @@
 """Retrieve a person's data for the camp register"""
 import requests
 import pandas as pd
-from camp_inscription.settings import API_KEY, APP_KEY, PAYMENT_TABLE, TEAM_TABLE, SUPPORT_TABLE
+from camp_inscription.settings import API_KEY, APP_KEY, PAYMENT_TABLE, TEAM_TABLE, META_TABLE
 
 base_url = "https://api.airtable.com/v0/{app_key}/{table}"
 filter_option = "?filterByFormula=%7BN%C3%BAmero+de+documento%7D%3D{id_number}"
@@ -20,23 +20,38 @@ class AllPersons:
     """Class that retrieves all ids"""
 
     def __init__(self):
-        self.url = base_url.format(app_key=APP_KEY, table=PAYMENT_TABLE) + "?fields%5B%5D=N%C3%BAmero+de+documento"
+        self.teams_url = base_url.format(app_key=APP_KEY, table=TEAM_TABLE)
+        self.meta_url = base_url.format(app_key=APP_KEY, table=META_TABLE)
+        self.records = []
+        self.meta = []
 
-    def get_ids(self):
+    def get_teams_data(self) -> None:
+        """Updates the records from all people"""
+        self.records += self.get_data(url=self.teams_url)
+
+    def get_meta_data(self) -> None:
+        """Updates the metadata of all teams"""
+        self.meta += self.get_data(url=self.meta_url)
+        
+    @staticmethod
+    def get_data(url: str) -> list:
+        """Retrieve in a list all data from a specified url"""
         params = ()
         records = []
         run = True
+        counter = 0
         while run:
-            r = requests.get(self.url, params=params, headers=headers)
-            data = pd.json_normalize(r.json()["records"])
-            records.append(data)
+            counter += 1
+            r = requests.get(url, params=params, headers=headers)
+            data = r.json()["records"]
+            records.extend(data)
             if "offset" in r.json():
                 run = True
                 params = (("offset", r.json()["offset"]), )
             else:
                 run = False
-        output_data = pd.concat(records)
-        return output_data["fields.Número de documento"].drop_duplicates().tolist()
+        print(f"API total requests: {counter}")
+        return records
 
 class Person:
 
