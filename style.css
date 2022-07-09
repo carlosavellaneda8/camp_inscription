@@ -1,0 +1,55 @@
+.highlight {
+    border-radius: 0.4rem;
+    color: white;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+.bold {
+    padding-left: 1rem;
+    font-weight: 700;
+}
+.nairobi {
+    background-color: #ae4f16;
+}
+.elcairo {
+    background-color: #c85a2f;
+}
+.asmara {
+    background-color: #d37e39;
+}
+.denver {
+    background-color: #4a6f22;
+}
+.distritodf {
+    background-color: #01c320;
+}
+.lima {
+    background-color: #95ff66;
+}
+.taiwan {
+    background-color: #d6ac01;
+}
+.yakarta {
+    background-color: #f9c81e;
+}
+.nuevadelhi {
+    background-color: #fef052;
+}
+.canberra {
+    background-color: #0000ff;
+}
+.wellington {
+    background-color: #019fdc;
+}
+.tawara {
+    background-color: #00fefe;
+}
+.madrid {
+    background-color: #7f1929;
+}
+.budapest {
+    background-color: #c00f1d;
+}
+.londres {
+    background-color: #c33041;
+}
