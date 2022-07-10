@@ -1,7 +1,6 @@
 """Retrieve a person's data for the camp register"""
 import requests
-import pandas as pd
-from camp_inscription.settings import API_KEY, APP_KEY, PAYMENT_TABLE, TEAM_TABLE, META_TABLE
+from camp_inscription.settings import API_KEY, APP_KEY, TEAM_TABLE, META_TABLE
 
 BASE_URL = "https://api.airtable.com/v0/{app_key}/{table}"
 headers = {"Authorization": f"Bearer {API_KEY}"}
@@ -50,8 +49,8 @@ class Person:
 
     """Class that retrieves the main attributes of a person based on its id number"""
 
-    def __init__(self, id: int):
-        self.id = id
+    def __init__(self, id_number: int):
+        self.id_number = id_number
         self.name = None
         self.team = None
         self.team_info = {}
@@ -59,7 +58,8 @@ class Person:
     def get_person_info(self, records: list) -> None:
         """Retrieves the person's name and team"""
         data = [
-            record["fields"] for record in records if record["fields"]["Número de documento"] == self.id
+            record["fields"] for record in records
+            if record["fields"]["Número de documento"] == self.id_number
         ][0]
         self.name = data["nombre"].title()
         self.team = data["distrito"]

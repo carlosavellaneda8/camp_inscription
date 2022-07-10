@@ -1,9 +1,11 @@
+"""Main streamlit app"""
+import os
+from pathlib import Path
 from typing import Tuple, Any
 import streamlit as st
 from camp_inscription.person import Person, AllPersons
 from camp_inscription.utils import read_local_css
-import os
-from pathlib import Path
+from camp_inscription.messages import RAW_PERSON_TEXT
 
 
 @st.cache
@@ -23,6 +25,7 @@ def get_all_ids(records: list) -> set:
 
 
 def get_image_path() -> str:
+    """Get the main logo image path"""
     img_path = os.path.join(Path(__file__).parent, "logo")
     img_path = [os.path.join(img_path, file_path) for file_path in os.listdir(img_path)]
     return img_path[0]
@@ -84,29 +87,34 @@ if check_id_number() & ("id_number" in st.session_state):
     person.get_person_info(all_records.records)
     person.get_team_info(all_records.meta)
 
-    # TODO: Fix team leaders and team images!
+    # Retrieve the image paths for the person's team
+    team_paths = get_team_paths(team=person.team)
 
     read_local_css("style.css")
-    st.image(image=get_image_path())
-    st.image(image=badge_path)
-    st.markdown("# Retiro de Jóvenes 2022 - TBUCF")
-    st.markdown(f"""
-    ¡Hola {person.name}! Estamos muy felices de contar contigo en este retiro.
-    A continuación, te presentamos una información que debes tener muy presente:
-
-    * **Equipo:** {person.team_info["Distrito_HR"]}
-    * **Confidente:** {person.team_info["Distrito_HR"]}
-    """)
     team_css = person.team.replace("_", "")
-    t = f"<div> Este es <span class='highlight {team_css}'>el color</span> de tu equipo.</div>"
-    st.markdown(t, unsafe_allow_html=True)
+
+    st.image(image=get_image_path())
+    st.image(image=team_paths["badge"])
+    st.markdown("# Retiro de Jóvenes 2022 - TBUCF")
+    st.markdown(
+        RAW_PERSON_TEXT.format(
+            name=person.name,
+            team=person.team_info["Equipo"],
+            district=person.team_info["Distrito_HR"],
+            leader_man=person.team_info["ConfidenteH"],
+            leader_woman=person.team_info["ConfidenteM"],
+            team_css=team_css,
+        ),
+        unsafe_allow_html=True
+    )
+
     col1, col2, col3 = st.columns(3)
 
     with col1:
         st.write("")
 
     with col2:
-        st.image(image=team_logo_path, width=250)
+        st.image(image=team_paths["logo"], width=250)
 
     with col3:
         st.write("")
