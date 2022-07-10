@@ -19,14 +19,14 @@ class AllPersons:
 
     def get_teams_data(self) -> None:
         """Updates the records from all people"""
-        self.records += self.get_data(url=self.teams_url)
+        self.records += self._get_data(url=self.teams_url)
 
     def get_meta_data(self) -> None:
         """Updates the metadata of all teams"""
-        self.meta += self.get_data(url=self.meta_url)
+        self.meta += self._get_data(url=self.meta_url)
 
     @staticmethod
-    def get_data(url: str) -> list:
+    def _get_data(url: str) -> list:
         """Retrieve in a list all data from a specified url"""
         params = ()
         records = []
@@ -44,3 +44,30 @@ class AllPersons:
                 run = False
         print(f"API total requests: {counter}")
         return records
+
+
+class Person:
+
+    """Class that retrieves the main attributes of a person based on its id number"""
+
+    def __init__(self, id: int):
+        self.id = id
+        self.name = None
+        self.team = None
+        self.team_info = {}
+
+    def get_person_info(self, records: list) -> None:
+        """Retrieves the person's name and team"""
+        data = [
+            record["fields"] for record in records if record["fields"]["Número de documento"] == self.id
+        ][0]
+        self.name = data["nombre"]
+        self.team = data["distrito"]
+
+    def get_team_info(self, meta: list) -> None:
+        """Retrieve the team's meta-data"""
+        assert self.team is not None
+        data = [
+            record["fields"] for record in meta if record["fields"]["distrito"] == self.team
+        ][0]
+        self.team_info.update(data)
