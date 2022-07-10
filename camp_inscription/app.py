@@ -114,7 +114,7 @@ if check_id_number() & ("id_number" in st.session_state):
         st.write("")
 
     with col2:
-        st.image(image=team_paths["logo"], width=250)
+        st.image(image=team_paths["logo"])
 
     with col3:
         st.write("")
