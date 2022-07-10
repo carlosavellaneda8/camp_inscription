@@ -61,7 +61,7 @@ class Person:
         data = [
             record["fields"] for record in records if record["fields"]["Número de documento"] == self.id
         ][0]
-        self.name = data["nombre"]
+        self.name = data["nombre"].title()
         self.team = data["distrito"]
 
     def get_team_info(self, meta: list) -> None:
