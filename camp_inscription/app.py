@@ -9,7 +9,7 @@ from camp_inscription.utils import read_local_css
 from camp_inscription.messages import RAW_PERSON_TEXT
 
 
-@st.cache_data
+@st.cache
 def get_all_records():
     """Retrieve all records"""
     all_people = AllPersons()
@@ -18,7 +18,7 @@ def get_all_records():
     return all_people
 
 
-@st.cache_data
+@st.cache
 def get_all_ids(records: list) -> set:
     """Retrieve all ids"""
     ids = [record["fields"]["Número de documento"] for record in records]

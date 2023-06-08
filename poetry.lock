@@ -1,22 +1,21 @@
 [[package]]
 name = "altair"
-version = "5.0.1"
-description = "Vega-Altair: A declarative statistical visualization library for Python."
+version = "4.2.2"
+description = "Altair: A declarative statistical visualization library for Python."
 category = "main"
 optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
+entrypoints = "*"
 jinja2 = "*"
 jsonschema = ">=3.0"
 numpy = "*"
 pandas = ">=0.18"
 toolz = "*"
-typing-extensions = {version = ">=4.0.1", markers = "python_version < \"3.11\""}
 
 [package.extras]
-dev = ["black (<24)", "hatch", "ipython", "m2r", "mypy", "pandas-stubs", "pytest", "pytest-cov", "ruff", "types-jsonschema", "types-setuptools", "vega-datasets", "vl-convert-python"]
-doc = ["docutils", "geopandas", "jinja2", "myst-parser", "numpydoc", "pillow", "pydata-sphinx-theme", "sphinx", "sphinx-copybutton", "sphinx-design", "sphinxext-altair"]
+dev = ["black", "docutils", "ipython", "flake8", "pytest", "sphinx", "mistune (<2.0.0)", "m2r", "vega-datasets", "recommonmark"]
 
 [[package]]
 name = "atomicwrites"
@@ -99,6 +98,14 @@ description = "Decorators for Humans"
 category = "main"
 optional = false
 python-versions = ">=3.5"
+
+[[package]]
+name = "entrypoints"
+version = "0.4"
+description = "Discover and load entry points from installed packages."
+category = "main"
+optional = false
+python-versions = ">=3.6"
 
 [[package]]
 name = "gitdb"
@@ -302,8 +309,8 @@ dev = ["pre-commit", "tox"]
 
 [[package]]
 name = "protobuf"
-version = "4.23.2"
-description = ""
+version = "3.20.3"
+description = "Protocol Buffers"
 category = "main"
 optional = false
 python-versions = ">=3.7"
@@ -456,6 +463,14 @@ pygments = ">=2.13.0,<3.0.0"
 jupyter = ["ipywidgets (>=7.5.1,<9)"]
 
 [[package]]
+name = "semver"
+version = "3.0.0"
+description = "Python helper for Semantic Versioning (https://semver.org)"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -473,51 +488,37 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "streamlit"
-version = "1.23.1"
-description = "A faster way to build and share data apps"
+version = "1.12.0"
+description = "The fastest way to build data apps in Python"
 category = "main"
 optional = false
-python-versions = ">=3.7, !=3.9.7"
+python-versions = ">=3.7"
 
 [package.dependencies]
-altair = ">=4.0,<6"
-blinker = ">=1.0.0,<2"
-cachetools = ">=4.0,<6"
-click = ">=7.0,<9"
-gitpython = ">=3,<3.1.19 || >3.1.19,<4"
-importlib-metadata = ">=1.4,<7"
-numpy = ">=1,<2"
-packaging = ">=14.1,<24"
-pandas = ">=0.25,<3"
-pillow = ">=6.2.0,<10"
-protobuf = ">=3.20,<5"
+altair = ">=3.2.0"
+blinker = ">=1.0.0"
+cachetools = ">=4.0"
+click = ">=7.0"
+gitpython = "!=3.1.19"
+importlib-metadata = ">=1.4"
+numpy = "*"
+packaging = ">=14.1"
+pandas = ">=0.21.0"
+pillow = ">=6.2.0"
+protobuf = ">=3.12,<4"
 pyarrow = ">=4.0"
-pydeck = ">=0.1.dev5,<1"
-pympler = ">=0.9,<2"
-python-dateutil = ">=2,<3"
-requests = ">=2.4,<3"
-rich = ">=10.11.0,<14"
-tenacity = ">=8.0.0,<9"
-toml = "<2"
-tornado = ">=6.0.3,<7"
-typing-extensions = ">=4.0.1,<5"
-tzlocal = ">=1.1,<5"
-validators = ">=0.2,<1"
+pydeck = ">=0.1.dev5"
+pympler = ">=0.9"
+python-dateutil = "*"
+requests = ">=2.4"
+rich = ">=10.11.0"
+semver = "*"
+toml = "*"
+tornado = ">=5.0"
+typing-extensions = ">=3.10.0.0"
+tzlocal = ">=1.1"
+validators = ">=0.2"
 watchdog = {version = "*", markers = "platform_system != \"Darwin\""}
-
-[package.extras]
-snowflake = ["snowflake-snowpark-python"]
-
-[[package]]
-name = "tenacity"
-version = "8.2.2"
-description = "Retry code until it succeeds"
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[package.extras]
-doc = ["reno", "sphinx", "tornado (>=4.5)"]
 
 [[package]]
 name = "toml"
@@ -636,7 +637,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-co
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10,<4.0"
-content-hash = "3cb65f92894b647184c323a801a321435d6cc1b8e0320396442e972e1f26beef"
+content-hash = "e9947ffb3726e2afbbe9fed3842781037ed6f3e565914c8a7956fb58d5fb09df"
 
 [metadata.files]
 altair = []
@@ -649,6 +650,7 @@ charset-normalizer = []
 click = []
 colorama = []
 decorator = []
+entrypoints = []
 gitdb = []
 gitpython = []
 idna = []
@@ -677,10 +679,10 @@ pytz = []
 pytz-deprecation-shim = []
 requests = []
 rich = []
+semver = []
 six = []
 smmap = []
 streamlit = []
-tenacity = []
 toml = []
 toolz = []
 tornado = []
