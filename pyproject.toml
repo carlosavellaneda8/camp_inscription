@@ -6,7 +6,7 @@ authors = ["carlosavellaneda8 <carlos.avellaneda8@gmail.com>"]
 packages = [{ include = "camp_inscription" }, ]
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.9.7 || >3.9.7,<4.0"
+python = ">=3.10,<4.0"
 streamlit = "^1.23.1"
 
 [tool.poetry.dev-dependencies]
