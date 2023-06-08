@@ -1,3 +1,7 @@
+
 [theme]
 base="dark"
 backgroundColor="#000000"
+
+[browser]
+gatherUsageStats = false
