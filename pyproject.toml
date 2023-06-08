@@ -6,9 +6,9 @@ authors = ["carlosavellaneda8 <carlos.avellaneda8@gmail.com>"]
 packages = [{ include = "camp_inscription" }, ]
 
 [tool.poetry.dependencies]
-python = "^3.10"
-streamlit = "^1.10.0"
-pandas = "^1.4.3"
+python = ">=3.8,<3.9.7 || >3.9.7,<4.0"
+streamlit = "^1.23.1"
+opencv-python = "^4.7.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
