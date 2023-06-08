@@ -8,48 +8,38 @@
     padding-left: 1rem;
     font-weight: 700;
 }
-.nairobi {
-    background-color: #ae4f16;
+.akurasi {
+    color: black;
+    background-color: #84e3df;
 }
-.elcairo {
-    background-color: #c85a2f;
+.bilanca {
+    color: black;
+    background-color: #e5ef6c;
 }
-.asmara {
-    background-color: #d37e39;
+.dynami {
+    background-color: #be4153;
 }
-.denver {
-    background-color: #4a6f22;
+.fortia {
+    color: black;
+    background-color: #fff231;
 }
-.distritodf {
-    background-color: #01c320;
+.katukma {
+    background-color: #2a41e7;
 }
-.lima {
-    background-color: #95ff66;
+.qarshilik {
+    color: black;
+    background-color: #94d6a4;
 }
-.taiwan {
-    background-color: #d6ac01;
+.raug {
+    background-color: #10b2b5;
 }
-.yakarta {
-    background-color: #f9c81e;
+.simba {
+    background-color: #ff3131;
 }
-.nuevadelhi {
-    background-color: #fef052;
+.usawa {
+    color: black;
+    background-color: #efb1ee;
 }
-.canberra {
-    background-color: #0000ff;
-}
-.wellington {
-    background-color: #019fdc;
-}
-.tawara {
-    background-color: #00fefe;
-}
-.madrid {
-    background-color: #7f1929;
-}
-.budapest {
-    background-color: #c00f1d;
-}
-.londres {
-    background-color: #c33041;
+.vastus {
+    background-color: #088d4b;
 }

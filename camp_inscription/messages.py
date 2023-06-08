@@ -1,10 +1,9 @@
 """Define the message that each person will receive"""
 
 RAW_PERSON_TEXT = """
-<p>¡Hola {name}! Estamos muy felices de contar contigo en este retiro. Esperamos que pases un tiempo increíble. A continuación, te presentamos una información que debes tener muy presente:</p>
+<p>¡Hola {name}! Estamos muy felices de contar contigo en este retiro. Esperamos que pases un tiempo increíble. A continuación, te presentamos la información del equipo al que perteneces:</p>
 <ul>
 <li><strong>Equipo:</strong> {team}</li>
-<li><strong>Distrito:</strong> {district}</li>
 <li><strong>Confidentes</strong>:<ul>
 <li>{leader_man}</li>
 <li>{leader_woman}</li>
